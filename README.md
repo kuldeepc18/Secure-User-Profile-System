@@ -343,9 +343,6 @@ Throughout this project, **ChatGPT** was used to improve development speed, code
 | Debugging | Assisted in identifying and resolving integration and runtime issues |
 | Documentation | Drafted and structured the README and setup instructions |
 
-**Summary:**  
-ChatGPT was primarily used to accelerate development, reduce repetitive coding, and ensure secure and clean implementation. Manual review and refinement were applied to adapt AI-generated output to project-specific requirements.
-
 ---
 
 ### 🎯 Effectiveness Score: **4 / 5**
