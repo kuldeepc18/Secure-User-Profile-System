@@ -290,25 +290,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 ---
 
-### 📮 Postman Collection
-
-You can test all APIs using this Postman collection structure:
-
-**Collection Name:** SecureProfile API
-
-**Variables:**
-- `base_url`: http://localhost:5000/api
-- `token`: (Set after login)
-
-**Folder 1: Authentication**
-- Register User (POST)
-- Login User (POST)
-
-**Folder 2: User**
-- Get Profile (GET) - Requires Authorization header
-
----
-
 ## 🗃️ Database Schema
 
 ### User Collection
@@ -340,198 +321,44 @@ You can test all APIs using this Postman collection structure:
 │ updatedAt   : Date (Auto-updated)           │
 └─────────────────────────────────────────────┘
 ```
-
-**Example Document (Stored in Database):**
-
-```json
-{
-  "_id": "674a5b1c8e9f1234567890ab",
-  "name": "John Doe",
-  "email": "john.doe@example.com",
-  "password": "$2a$10$abcdefghijklmnopqrstuv1234567890ABCDEFGHIJKLMNOPQRS",
-  "aadhaar": "a3f7b8c9d1e2f4g5h6i7j8k9l0m1n2o3",
-  "createdAt": "2025-12-21T10:30:00.000Z",
-  "updatedAt": "2025-12-21T10:30:00.000Z",
-  "__v": 0
-}
-```
 ---
 
-## 🤖 AI Tool Usage & Documentation (MANDATORY)
+## 🤖 AI Tool Usage & Development Tasks
 
-### AI-Assisted Development Tasks
+### 🤖 AI Tool Usage Summary
 
-Throughout this project, **ChatGPT** was extensively used to accelerate development and improve code quality. Below are specific tasks where AI assistance was leveraged:
+Throughout this project, **ChatGPT** was used to improve development speed, code quality, and documentation clarity. AI assistance was primarily focused on reducing boilerplate work, implementing security features, structuring frontend components, and supporting debugging.
 
-| # | Task Description | AI Tool Used | Specific Contribution |
-|---|------------------|--------------|----------------------|
-| 1 | **Initial Project Structure Setup** | ChatGPT | Generated folder structure, package.json configurations for both frontend and backend |
-| 2 | **MongoDB Schema Design** | ChatGPT | Created User model with Mongoose schema including timestamps and validation rules |
-| 3 | **AES-256 Encryption Implementation** | ChatGPT | Generated encrypt/decrypt utility functions using Node.js crypto module with IV handling |
-| 4 | **JWT Middleware Development** | ChatGPT | Implemented authMiddleware.js with token extraction, verification, and error handling |
-| 5 | **Bcrypt Password Hashing** | ChatGPT | Added password hashing in User model pre-save hook with proper salt rounds |
-| 6 | **Authentication Controller Logic** | ChatGPT | Wrote register and login controllers with validation, error handling, and token generation |
-| 7 | **Protected Route Implementation** | ChatGPT | Created ProtectedRoute component for React Router with authentication check |
-| 8 | **Axios Configuration** | ChatGPT | Set up Axios instance with base URL, interceptors, and error handling |
-| 9 | **React Login Form** | ChatGPT | Generated Login.jsx with form state management, validation, and submission handling |
-| 10 | **React Register Form** | ChatGPT | Created Register.jsx with all input fields and form validation |
-| 11 | **Profile Page Design** | ChatGPT | Built Profile.jsx with useEffect for data fetching and conditional rendering |
-| 12 | **Catppuccin Theme Integration** | ChatGPT | Generated CSS variables for Mocha (dark) and Latte (light) themes with all color tokens |
-| 13 | **Theme Context Implementation** | ChatGPT | Created ThemeContext.jsx with useState, useEffect, and localStorage persistence |
-| 14 | **Navbar Component** | ChatGPT | Built responsive Navbar with theme toggle, brand styling, and logout functionality |
-| 15 | **CSS Animations & Transitions** | ChatGPT | Added smooth transitions, hover effects, and loading animations across all components |
-| 16 | **Form Styling & Layouts** | ChatGPT | Designed centered form layouts with modern card styling and gradient effects |
-| 17 | **API Error Handling** | ChatGPT | Implemented try-catch blocks with user-friendly error messages in all API calls |
-| 18 | **Environment Variable Setup** | ChatGPT | Generated .env.example files with proper documentation for all required variables |
-| 19 | **Express Route Configuration** | ChatGPT | Set up authRoutes.js and userRoutes.js with proper HTTP methods and middleware |
-| 20 | **CORS Configuration** | ChatGPT | Configured CORS middleware with appropriate origin and credentials settings |
-| 21 | **Database Connection Logic** | ChatGPT | Wrote db.js with MongoDB connection, error handling, and retry logic |
-| 22 | **Loading States Implementation** | ChatGPT | Added loading states with disabled buttons and loading text in all forms |
-| 23 | **Responsive Design CSS** | ChatGPT | Created responsive styles for mobile, tablet, and desktop views |
-| 24 | **Icon & Emoji Integration** | ChatGPT | Selected and integrated appropriate emojis for navbar, page titles, and README |
-| 25 | **README Documentation** | ChatGPT | Generated comprehensive README structure with setup instructions and API docs |
-| 26 | **Error Boundary Handling** | ChatGPT | Assisted in implementing proper error handling patterns across the application |
-| 27 | **Token Expiration Logic** | ChatGPT | Implemented JWT token expiration and automatic logout functionality |
-| 28 | **Code Refactoring** | ChatGPT | Suggested cleaner code patterns and removed redundant code blocks |
-| 29 | **Comment Documentation** | ChatGPT | Added inline comments explaining complex logic in encryption and auth modules |
-| 30 | **Testing Scenarios** | ChatGPT | Suggested test cases for API endpoints and edge case handling |
+**Key areas where AI assistance was used:**
+
+| Area | Contribution |
+|-----|-------------|
+| Project Setup | Generated initial folder structure and configuration for frontend and backend |
+| Database Design | Created MongoDB user schema with validation and timestamps |
+| Security | Implemented AES-256 encryption, bcrypt password hashing, and JWT authentication |
+| Backend Logic | Assisted in writing authentication controllers, middleware, and route handling |
+| Frontend Development | Generated Login, Register, and Profile components with API integration |
+| UI & Styling | Helped design centered layouts and apply a consistent cappuccino mocha theme |
+| API Integration | Configured Axios, handled errors, and managed authentication headers |
+| Debugging | Assisted in identifying and resolving integration and runtime issues |
+| Documentation | Drafted and structured the README and setup instructions |
+
+**Summary:**  
+ChatGPT was primarily used to accelerate development, reduce repetitive coding, and ensure secure and clean implementation. Manual review and refinement were applied to adapt AI-generated output to project-specific requirements.
 
 ---
 
-### 🎯 Effectiveness Score: **4.5 / 5**
+### 🎯 Effectiveness Score: **4 / 5**
 
-**Justification:**
-
-ChatGPT significantly enhanced development efficiency and code quality throughout this project:
-
-**Time Savings (Score: 5/5):**
-- Reduced boilerplate code writing by approximately **60-70%**
-- Authentication and encryption implementations that would typically take **4-5 hours** were completed in **1.5 hours**
-- Theme system setup and CSS variable generation saved **3+ hours** of manual work
-- Overall project completion time reduced from an estimated **20-25 hours** to **10-12 hours**
-
-**Code Quality (Score: 4/5):**
-- Generated industry-standard security implementations (AES-256, bcrypt, JWT)
-- Suggested proper error handling patterns and edge cases
-- Provided consistent code formatting and naming conventions
-- Some AI-generated code required refinement for project-specific requirements
-
-**Learning & Understanding (Score: 5/5):**
-- AI suggestions helped understand best practices for encryption and authentication
-- Learned modern React patterns (Context API, custom hooks) through AI examples
-- Gained insights into proper API design and RESTful conventions
-
-**Debugging Challenges (Score: 4/5):**
-- AI-generated encryption code required manual testing and IV handling adjustments
-- Some CSS suggestions needed modification for specific theme requirements
-- Minor debugging required for token handling in protected routes
-- Overall, debugging AI code took **less time** than writing from scratch
-
-**Overall Assessment:**
-ChatGPT was **highly effective** for this project, particularly for:
-- ✅ Boilerplate code generation (models, controllers, routes)
-- ✅ Security implementations (encryption, hashing, JWT)
-- ✅ UI component scaffolding and styling
-- ✅ Documentation and code comments
-
-**Areas where manual intervention was needed:**
-- 🔧 Project-specific business logic
-- 🔧 Custom theme color fine-tuning
-- 🔧 Integration between frontend and backend
-- 🔧 Testing and validation
-
-**Score Breakdown:**
-- Time Efficiency: 5/5
-- Code Quality: 4/5
-- Error Rate: 4/5
-- Learning Value: 5/5
-- **Average: 4.5/5**
-
----
-
-## 🎨 UI/UX Features
-
-### Theme System 🌓
-
-The application implements a beautiful **Catppuccin theme** with two variants:
-
-#### Mocha (Dark Theme) 🌙
-- Base background: `#1e1e2e` (Dark blue-grey)
-- Surface colors: `#313244`, `#45475a`, `#585b70`
-- Accent colors: Mauve (`#cba6f7`), Blue (`#89b4fa`), Green (`#a6e3a1`)
-- Text: `#cdd6f4` (Light grey)
-
-#### Latte (Light Theme) ☀️
-- Base background: `#eff1f5` (Light grey)
-- Surface colors: `#ccd0da`, `#bcc0cc`, `#acb0be`
-- Accent colors: Mauve (`#8839ef`), Blue (`#1e66f5`), Green (`#40a02b`)
-- Text: `#4c4f69` (Dark grey)
-
-### Design Features ✨
-
-- **Centered Forms:** All authentication forms centered on screen
-- **Gradient Buttons:** Beautiful gradient effects on primary buttons
-- **Smooth Animations:** Transitions on hover, focus, and theme changes
-- **Loading States:** User feedback during API calls
-- **Responsive Navbar:** Fixed navigation with brand and theme toggle
-- **Card Designs:** Elevated cards with shadows and borders
-- **Form Labels:** Clear labels for all input fields
-- **Error Handling:** User-friendly error messages
-
----
-
-## 📱 Responsive Design
-
-The application is fully responsive and tested on:
-- 📱 **Mobile:** 320px - 480px
-- 📱 **Tablet:** 481px - 768px
-- 💻 **Laptop:** 769px - 1024px
-- 🖥️ **Desktop:** 1025px+
-
----
-
-## 🧪 Testing
-
-### Manual Testing Checklist
-
-#### Authentication Flow ✅
-- [x] User registration with valid data
-- [x] Registration with duplicate email (error handling)
-- [x] Login with correct credentials
-- [x] Login with incorrect password
-- [x] Login with non-existent email
-- [x] Token storage in localStorage
-- [x] Token persistence across page refreshes
-
-#### Profile Access ✅
-- [x] Authorized profile access with valid token
-- [x] Unauthorized access without token (redirect)
-- [x] Aadhaar decryption verification
-- [x] Profile data display correctness
-- [x] Logout functionality
-
-#### UI/UX Testing ✅
-- [x] Theme toggle functionality
-- [x] Theme persistence after reload
-- [x] Form validation on all pages
-- [x] Loading states during API calls
-- [x] Responsive design on multiple devices
-- [x] Navbar visibility and functionality
-
-### API Testing (Postman) ✅
-- [x] Register endpoint with valid/invalid data
-- [x] Login endpoint with various scenarios
-- [x] Profile endpoint with/without token
-- [x] Error response format validation
-- [x] CORS configuration testing
+Using ChatGPT significantly improved development efficiency by reducing boilerplate work for authentication, encryption utilities, API structure, and frontend scaffolding. It saved several hours during setup and documentation. Some AI-generated code required manual debugging and refinement during frontend–backend integration and encryption testing, which slightly reduced overall efficiency.
 
 ---
 
 ## 🚀 Deployment
 
-### Backend Deployment (Render/Railway)
+### Backend Deployment (Render)
 
-1. Create account on Render or Railway
+1. Create account on Render
 2. Connect GitHub repository
 3. Add environment variables in dashboard
 4. Deploy backend service
@@ -547,70 +374,8 @@ The application is fully responsive and tested on:
 
 ---
 
-## 📝 Future Enhancements
-
-- [ ] Email verification during registration
-- [ ] Password reset functionality
-- [ ] Two-factor authentication (2FA)
-- [ ] Profile picture upload
-- [ ] User role management (Admin/User)
-- [ ] Activity logs and audit trails
-- [ ] Rate limiting on API endpoints
-- [ ] Refresh token implementation
-- [ ] Social authentication (Google, GitHub)
-- [ ] Password strength meter
-- [ ] Account deletion functionality
-- [ ] Export user data (GDPR compliance)
-
----
-
-## 🐛 Known Issues
-
-- None at the moment! 🎉
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 👨‍💻 Author
-
-**Kuldeep Choudhary**
-
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
-
----
-
-## 🙏 Acknowledgments
-
-- **LenDenClub** for the assignment opportunity
-- **ChatGPT (OpenAI)** for AI-assisted development
-- **Catppuccin** for the beautiful color theme
-- **MongoDB** for the database platform
-- **Vercel/Render** for hosting services
-
----
-
-## 📞 Support
-
-If you have any questions or run into issues:
-
-1. Check the [Setup Instructions](#-setup--run-instructions)
-2. Review the [API Documentation](#-api-documentation)
-3. Open an issue on GitHub
-4. Contact me via email
-
----
-
 <div align="center">
 
 **⭐ Star this repository if you found it helpful! ⭐**
-
-Made with ❤️ and ☕ by Kuldeep Choudhary
 
 </div>
