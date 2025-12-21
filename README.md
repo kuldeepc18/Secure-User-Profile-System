@@ -156,19 +156,6 @@ cd Secure-User-Profile-System
    http://localhost:5173
    ```
 
-### 4️⃣ Running Both Concurrently (Optional)
-
-You can run both frontend and backend simultaneously using **concurrently**:
-
-1. **Install concurrently in the root directory:**
-   ```bash
-   npm install -g concurrently
-   ```
-
-2. **Run from root:**
-   ```bash
-   concurrently "cd backend && npm start" "cd frontend && npm run dev"
-   ```
 
 ---
 
@@ -368,102 +355,46 @@ You can test all APIs using this Postman collection structure:
   "__v": 0
 }
 ```
-
-**Security Notes:**
-- ✅ Email is unique and indexed for fast lookups
-- ✅ Password is hashed with bcrypt (never stored in plain text)
-- ✅ Aadhaar is AES-256 encrypted (decrypted only on backend for authorized requests)
-- ✅ Timestamps are automatically managed by Mongoose
-
----
-
-## 🔒 Security Implementation
-
-### 1. Password Security 🛡️
-- **Hashing Algorithm:** bcrypt with 10 salt rounds
-- **Implementation:** Passwords are hashed before database storage
-- **Verification:** Secure comparison using bcrypt.compare()
-- **Never exposed:** Password hash never returned in API responses
-
-### 2. Data Encryption 🔐
-- **Algorithm:** AES-256-CBC (Advanced Encryption Standard)
-- **Target Data:** Aadhaar/ID numbers and sensitive PII
-- **Key Management:** 256-bit encryption key stored in environment variables
-- **Initialization Vector (IV):** Randomly generated for each encryption
-- **Storage:** Encrypted data stored as hexadecimal strings
-
-### 3. JWT Authentication 🎫
-- **Token Generation:** Signed with HS256 algorithm
-- **Payload:** Contains user ID and expiration time
-- **Expiration:** 24 hours (configurable)
-- **Storage:** Client-side in localStorage
-- **Transmission:** Bearer token in Authorization header
-- **Validation:** Middleware verifies signature and expiration
-
-### 4. Route Protection 🚧
-- **Middleware:** authMiddleware.js validates JWT on protected routes
-- **Authorization:** Only authenticated users can access profile data
-- **Client-side:** ProtectedRoute component prevents unauthorized access
-- **Automatic redirect:** Unauthenticated users redirected to login
-
-### 5. Environment Variables 🌍
-- **Sensitive Data:** All secrets stored in .env files
-- **Never committed:** .env files in .gitignore
-- **Required Keys:**
-  - MONGO_URI (Database connection)
-  - JWT_SECRET (Token signing)
-  - ENCRYPTION_KEY (Data encryption)
-
-### 6. CORS Configuration 🌐
-- **Cross-Origin:** Configured to allow frontend origin only
-- **Credentials:** Supports cookies and authentication headers
-- **Methods:** Only allowed HTTP methods enabled
-
-### 7. Error Handling ⚠️
-- **Generic Messages:** No sensitive information in error responses
-- **Status Codes:** Proper HTTP status codes for all scenarios
-- **Logging:** Backend logs errors without exposing to client
-
 ---
 
 ## 🤖 AI Tool Usage & Documentation (MANDATORY)
 
 ### AI-Assisted Development Tasks
 
-Throughout this project, **GitHub Copilot** was extensively used to accelerate development and improve code quality. Below are specific tasks where AI assistance was leveraged:
+Throughout this project, **ChatGPT** was extensively used to accelerate development and improve code quality. Below are specific tasks where AI assistance was leveraged:
 
 | # | Task Description | AI Tool Used | Specific Contribution |
 |---|------------------|--------------|----------------------|
-| 1 | **Initial Project Structure Setup** | GitHub Copilot | Generated folder structure, package.json configurations for both frontend and backend |
-| 2 | **MongoDB Schema Design** | GitHub Copilot | Created User model with Mongoose schema including timestamps and validation rules |
-| 3 | **AES-256 Encryption Implementation** | GitHub Copilot | Generated encrypt/decrypt utility functions using Node.js crypto module with IV handling |
-| 4 | **JWT Middleware Development** | GitHub Copilot | Implemented authMiddleware.js with token extraction, verification, and error handling |
-| 5 | **Bcrypt Password Hashing** | GitHub Copilot | Added password hashing in User model pre-save hook with proper salt rounds |
-| 6 | **Authentication Controller Logic** | GitHub Copilot | Wrote register and login controllers with validation, error handling, and token generation |
-| 7 | **Protected Route Implementation** | GitHub Copilot | Created ProtectedRoute component for React Router with authentication check |
-| 8 | **Axios Configuration** | GitHub Copilot | Set up Axios instance with base URL, interceptors, and error handling |
-| 9 | **React Login Form** | GitHub Copilot | Generated Login.jsx with form state management, validation, and submission handling |
-| 10 | **React Register Form** | GitHub Copilot | Created Register.jsx with all input fields and form validation |
-| 11 | **Profile Page Design** | GitHub Copilot | Built Profile.jsx with useEffect for data fetching and conditional rendering |
-| 12 | **Catppuccin Theme Integration** | GitHub Copilot | Generated CSS variables for Mocha (dark) and Latte (light) themes with all color tokens |
-| 13 | **Theme Context Implementation** | GitHub Copilot | Created ThemeContext.jsx with useState, useEffect, and localStorage persistence |
-| 14 | **Navbar Component** | GitHub Copilot | Built responsive Navbar with theme toggle, brand styling, and logout functionality |
-| 15 | **CSS Animations & Transitions** | GitHub Copilot | Added smooth transitions, hover effects, and loading animations across all components |
-| 16 | **Form Styling & Layouts** | GitHub Copilot | Designed centered form layouts with modern card styling and gradient effects |
-| 17 | **API Error Handling** | GitHub Copilot | Implemented try-catch blocks with user-friendly error messages in all API calls |
-| 18 | **Environment Variable Setup** | GitHub Copilot | Generated .env.example files with proper documentation for all required variables |
-| 19 | **Express Route Configuration** | GitHub Copilot | Set up authRoutes.js and userRoutes.js with proper HTTP methods and middleware |
-| 20 | **CORS Configuration** | GitHub Copilot | Configured CORS middleware with appropriate origin and credentials settings |
-| 21 | **Database Connection Logic** | GitHub Copilot | Wrote db.js with MongoDB connection, error handling, and retry logic |
-| 22 | **Loading States Implementation** | GitHub Copilot | Added loading states with disabled buttons and loading text in all forms |
-| 23 | **Responsive Design CSS** | GitHub Copilot | Created responsive styles for mobile, tablet, and desktop views |
-| 24 | **Icon & Emoji Integration** | GitHub Copilot | Selected and integrated appropriate emojis for navbar, page titles, and README |
-| 25 | **README Documentation** | GitHub Copilot | Generated comprehensive README structure with setup instructions and API docs |
-| 26 | **Error Boundary Handling** | GitHub Copilot | Assisted in implementing proper error handling patterns across the application |
-| 27 | **Token Expiration Logic** | GitHub Copilot | Implemented JWT token expiration and automatic logout functionality |
-| 28 | **Code Refactoring** | GitHub Copilot | Suggested cleaner code patterns and removed redundant code blocks |
-| 29 | **Comment Documentation** | GitHub Copilot | Added inline comments explaining complex logic in encryption and auth modules |
-| 30 | **Testing Scenarios** | GitHub Copilot | Suggested test cases for API endpoints and edge case handling |
+| 1 | **Initial Project Structure Setup** | ChatGPT | Generated folder structure, package.json configurations for both frontend and backend |
+| 2 | **MongoDB Schema Design** | ChatGPT | Created User model with Mongoose schema including timestamps and validation rules |
+| 3 | **AES-256 Encryption Implementation** | ChatGPT | Generated encrypt/decrypt utility functions using Node.js crypto module with IV handling |
+| 4 | **JWT Middleware Development** | ChatGPT | Implemented authMiddleware.js with token extraction, verification, and error handling |
+| 5 | **Bcrypt Password Hashing** | ChatGPT | Added password hashing in User model pre-save hook with proper salt rounds |
+| 6 | **Authentication Controller Logic** | ChatGPT | Wrote register and login controllers with validation, error handling, and token generation |
+| 7 | **Protected Route Implementation** | ChatGPT | Created ProtectedRoute component for React Router with authentication check |
+| 8 | **Axios Configuration** | ChatGPT | Set up Axios instance with base URL, interceptors, and error handling |
+| 9 | **React Login Form** | ChatGPT | Generated Login.jsx with form state management, validation, and submission handling |
+| 10 | **React Register Form** | ChatGPT | Created Register.jsx with all input fields and form validation |
+| 11 | **Profile Page Design** | ChatGPT | Built Profile.jsx with useEffect for data fetching and conditional rendering |
+| 12 | **Catppuccin Theme Integration** | ChatGPT | Generated CSS variables for Mocha (dark) and Latte (light) themes with all color tokens |
+| 13 | **Theme Context Implementation** | ChatGPT | Created ThemeContext.jsx with useState, useEffect, and localStorage persistence |
+| 14 | **Navbar Component** | ChatGPT | Built responsive Navbar with theme toggle, brand styling, and logout functionality |
+| 15 | **CSS Animations & Transitions** | ChatGPT | Added smooth transitions, hover effects, and loading animations across all components |
+| 16 | **Form Styling & Layouts** | ChatGPT | Designed centered form layouts with modern card styling and gradient effects |
+| 17 | **API Error Handling** | ChatGPT | Implemented try-catch blocks with user-friendly error messages in all API calls |
+| 18 | **Environment Variable Setup** | ChatGPT | Generated .env.example files with proper documentation for all required variables |
+| 19 | **Express Route Configuration** | ChatGPT | Set up authRoutes.js and userRoutes.js with proper HTTP methods and middleware |
+| 20 | **CORS Configuration** | ChatGPT | Configured CORS middleware with appropriate origin and credentials settings |
+| 21 | **Database Connection Logic** | ChatGPT | Wrote db.js with MongoDB connection, error handling, and retry logic |
+| 22 | **Loading States Implementation** | ChatGPT | Added loading states with disabled buttons and loading text in all forms |
+| 23 | **Responsive Design CSS** | ChatGPT | Created responsive styles for mobile, tablet, and desktop views |
+| 24 | **Icon & Emoji Integration** | ChatGPT | Selected and integrated appropriate emojis for navbar, page titles, and README |
+| 25 | **README Documentation** | ChatGPT | Generated comprehensive README structure with setup instructions and API docs |
+| 26 | **Error Boundary Handling** | ChatGPT | Assisted in implementing proper error handling patterns across the application |
+| 27 | **Token Expiration Logic** | ChatGPT | Implemented JWT token expiration and automatic logout functionality |
+| 28 | **Code Refactoring** | ChatGPT | Suggested cleaner code patterns and removed redundant code blocks |
+| 29 | **Comment Documentation** | ChatGPT | Added inline comments explaining complex logic in encryption and auth modules |
+| 30 | **Testing Scenarios** | ChatGPT | Suggested test cases for API endpoints and edge case handling |
 
 ---
 
@@ -471,7 +402,7 @@ Throughout this project, **GitHub Copilot** was extensively used to accelerate d
 
 **Justification:**
 
-GitHub Copilot significantly enhanced development efficiency and code quality throughout this project:
+ChatGPT significantly enhanced development efficiency and code quality throughout this project:
 
 **Time Savings (Score: 5/5):**
 - Reduced boilerplate code writing by approximately **60-70%**
@@ -497,7 +428,7 @@ GitHub Copilot significantly enhanced development efficiency and code quality th
 - Overall, debugging AI code took **less time** than writing from scratch
 
 **Overall Assessment:**
-GitHub Copilot was **highly effective** for this project, particularly for:
+ChatGPT was **highly effective** for this project, particularly for:
 - ✅ Boilerplate code generation (models, controllers, routes)
 - ✅ Security implementations (encryption, hashing, JWT)
 - ✅ UI component scaffolding and styling
@@ -658,7 +589,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🙏 Acknowledgments
 
 - **LenDenClub** for the assignment opportunity
-- **GitHub Copilot** for AI-assisted development
+- **ChatGPT (OpenAI)** for AI-assisted development
 - **Catppuccin** for the beautiful color theme
 - **MongoDB** for the database platform
 - **Vercel/Render** for hosting services
