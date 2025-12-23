@@ -20,7 +20,12 @@ const userSchema = new mongoose.Schema(
         aadhaar: {
             type: String,
             required: true
-        }
+        },
+        hashedAadhaar: {
+            type: String,
+            unique: true,
+        },
+
     },
     {
         timestamps: true
